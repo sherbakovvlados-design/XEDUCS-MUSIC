@@ -1,0 +1,813 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Загальні налаштування */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+}
+
+span {
+    color: #ff183c;
+}
+
+/* Верхнє меню */
+.header {
+    width: 100%;
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid #351018;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ff183c;
+    text-shadow: 0 0 15px #ff183c;
+}
+
+/* Головний екран */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 10%;
+    background:
+        radial-gradient(
+            ellipse at 80% 50%,
+            rgba(255, 0, 50, 0.2),
+            transparent 55%
+        ),
+        #080808;
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: fadeUp 1.2s ease;
+}
+
+.subtitle {
+    color: #ff183c;
+    font-size: 13px;
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+}
+
+.hero h2 {
+    font-size: clamp(45px, 7vw, 95px);
+    line-height: 1.2;
+    font-weight: 900;
+    margin-bottom: 25px;
+}
+
+.hero h2 span {
+    text-shadow: 0 0 35px rgba(255, 24, 60, 0.6);
+}
+
+.description {
+    color: #aaa;
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+.main-button {
+    display: inline-block;
+    padding: 16px 35px;
+    background: #ff183c;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    box-shadow: 0 0 25px rgba(255, 24, 60, 0.35);
+    transition: 0.3s;
+}
+
+.main-button:hover {
+    background: #c90028;
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px rgba(255, 24, 60, 0.7);
+}
+
+/* Заголовки секцій */
+.music-section,
+.playlists,
+.about {
+    padding: 100px 10%;
+    text-align: center;
+    scroll-margin-top: 85px;
+}
+
+.music-section h2,
+.playlists h2,
+.about h2 {
+    font-size: clamp(25px, 4vw, 42px);
+    margin-bottom: 50px;
+}
+
+/* Музичний плеєр */
+.player {
+    max-width: 420px;
+    margin: auto;
+    padding: 40px 30px;
+    background: linear-gradient(145deg, #1d1014, #101010);
+    border: 1px solid #5a1828;
+    border-radius: 25px;
+    box-shadow: 0 0 40px rgba(255, 0, 50, 0.12);
+    transition: 0.3s;
+}
+
+.player:hover {
+    box-shadow: 0 0 55px rgba(255, 0, 50, 0.25);
+}
+
+.album-cover {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 30px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ff183c, #43000e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    box-shadow: 0 0 35px rgba(255, 24, 60, 0.35);
+    animation: coverGlow 3s infinite alternate;
+}
+
+.player h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.player p {
+    color: #999;
+    font-size: 14px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.controls button {
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background: #262026;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.controls button:hover {
+    background: #ff183c;
+    transform: scale(1.1);
+}
+
+#play {
+    width: 70px;
+    height: 70px;
+    background: #ff183c;
+    box-shadow: 0 0 25px rgba(255, 24, 60, 0.5);
+}
+
+/* Плейлисти */
+.playlists {
+    background: #0d0d0d;
+}
+
+.playlist-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.playlist-card {
+    min-height: 220px;
+    padding: 35px 20px;
+    border: 1px solid #41131e;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #231015, #111);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.35s;
+}
+
+.playlist-card:hover {
+    transform: translateY(-12px);
+    border-color: #ff183c;
+    box-shadow: 0 15px 40px rgba(255, 24, 60, 0.2);
+}
+
+.playlist-card h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.playlist-card p {
+    color: #999;
+}
+
+/* Про сайт */
+.about p {
+    max-width: 650px;
+    margin: auto;
+    color: #aaa;
+    line-height: 2;
+}
+
+/* Нижня частина */
+footer {
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid #351018;
+    color: #777;
+    font-size: 12px;
+}
+
+/* Анімації */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes coverGlow {
+    from {
+        box-shadow: 0 0 15px rgba(255, 24, 60, 0.2);
+    }
+    to {
+        box-shadow: 0 0 50px rgba(255, 24, 60, 0.6);
+    }
+}
+
+/* Адаптація для телефонів */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .hero {
+        min-height: 75vh;
+        padding: 70px 7%;
+    }
+
+    .hero h2 {
+        font-size: 45px;
+    }
+
+    .subtitle {
+        letter-spacing: 2px;
+    }
+
+    .playlist-container {
+        grid-template-columns: 1fr;
+    }
+
+    .music-section,
+    .playlists,
+    .about {
+        padding: 70px 6%;
+        scroll-margin-top: 135px;
+    }
+
+    .player {
+        padding: 30px 15px;
+    }
+
+    .album-cover {
+        width: 190px;
+        height: 190px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+
+/* ===== XEDUCS MUSIC PLAYER UPDATE ===== */
+
+/* Анімований еквалайзер */
+.equalizer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 55px;
+    gap: 5px;
+    margin: 25px 0;
+}
+
+.equalizer span {
+    width: 6px;
+    height: 12px;
+    background: #ff183c;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ff183c;
+}
+
+.equalizer.playing span {
+    animation: equalizerMove 0.8s ease-in-out
+               infinite alternate;
+}
+
+.equalizer span:nth-child(2n) {
+    animation-delay: 0.2s;
+}
+
+.equalizer span:nth-child(3n) {
+    animation-delay: 0.4s;
+}
+
+.equalizer span:nth-child(5n) {
+    animation-delay: 0.6s;
+}
+
+@keyframes equalizerMove {
+    from {
+        height: 8px;
+    }
+
+    to {
+        height: 45px;
+    }
+}
+
+/* Шкала прогресу */
+.progress-container {
+    margin-top: 25px;
+}
+
+#progress,
+#volume {
+    width: 100%;
+    cursor: pointer;
+    accent-color: #ff183c;
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #aaaaaa;
+}
+
+/* Регулювання гучності */
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.volume-container input {
+    flex: 1;
+    min-width: 0;
+}
+
+.volume-container span {
+    color: #ff183c;
+    font-size: 14px;
+}
+
+/* Вимкнення анімацій за налаштуваннями системи */
+@media (prefers-reduced-motion: reduce) {
+    .equalizer.playing span {
+        animation: none;
+    }
+}
+
+
+
+/* Виправлення розміру обкладинки */
+
+.player {
+    width: 100%;
+    max-width: 525px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.player .album-cover {
+    width: 220px;
+    height: 220px;
+    max-width: 100%;
+    margin: 0 auto 25px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+    display: block;
+    font-size: 0;
+}
+
+.player .album-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+
+
+/* ===== XEDUCS TRACK LIST FIX ===== */
+
+.tracks-section {
+    display: block;
+    width: 100%;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    background: #0b080a;
+    text-align: center;
+}
+
+.tracks-section h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.tracks-section h2 span {
+    color: #ff183c;
+}
+
+.tracks-section .tracks-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 700px;
+    gap: 12px;
+    margin: 0 auto;
+}
+
+.tracks-section .track-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    min-height: 80px;
+    padding: 12px 16px;
+    gap: 16px;
+    box-sizing: border-box;
+    background: #1b1217;
+    border: 1px solid #38202a;
+    border-radius: 14px;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+}
+
+.tracks-section .track-item:hover {
+    background: #30131d;
+    border-color: #ff183c;
+}
+
+.tracks-section .track-item.active {
+    background: #3a101d;
+    border-color: #ff183c;
+}
+
+.tracks-section .track-cover {
+    display: block;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.tracks-section .track-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.tracks-section .track-info h3 {
+    font-size: 17px;
+    margin: 0 0 5px;
+    color: white;
+}
+
+.tracks-section .track-info p {
+    font-size: 13px;
+    color: #aaaaaa;
+    margin: 0;
+}
+
+.tracks-section .track-play {
+    font-size: 24px;
+    color: #ff183c;
+    flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+    .tracks-section {
+        padding: 40px 15px;
+    }
+
+    .tracks-section .track-cover {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        max-width: 48px;
+    }
+}
+
+
+
+/* ===== XEDUCS STEP 8: ANIMATIONS ===== */
+
+/* Плавна анімація обкладинки */
+.player .album-cover img {
+    transition: transform 0.4s ease,
+                filter 0.4s ease;
+}
+
+.player .album-cover:hover img {
+    transform: scale(1.06);
+    filter: brightness(1.15);
+}
+
+/* Неонове підсвічування кнопок */
+.player .controls button {
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.player .controls button:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 25px rgba(255, 24, 60, 0.6);
+}
+
+/* Плавні ефекти для списку пісень */
+.tracks-section .track-item {
+    transition: transform 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease;
+}
+
+.tracks-section .track-item:hover {
+    transform: translateX(5px);
+}
+
+/* Підсвічування активної композиції */
+.tracks-section .track-item.active {
+    box-shadow: 0 0 18px rgba(255, 24, 60, 0.25);
+}
+
+/* Плавне збільшення маленьких обкладинок */
+.tracks-section .track-cover {
+    transition: transform 0.3s ease;
+}
+
+.tracks-section .track-item:hover .track-cover {
+    transform: scale(1.08);
+}
+
+/* Враховуємо налаштування зменшення анімацій */
+@media (prefers-reduced-motion: reduce) {
+    .player .album-cover img,
+    .player .controls button,
+    .tracks-section .track-item,
+    .tracks-section .track-cover {
+        transition: none;
+    }
+
+    .player .album-cover:hover img,
+    .player .controls button:hover,
+    .tracks-section .track-item:hover,
+    .tracks-section .track-item:hover .track-cover {
+        transform: none;
+    }
+}
+
+
+/* ===== XEDUCS MOBILE VERSION ===== */
+
+@media (max-width: 600px) {
+
+    /* Запобігаємо горизонтальній прокрутці */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Плеєр */
+    .player {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 15px;
+        box-sizing: border-box;
+    }
+
+    /* Обкладинка */
+    .player .album-cover {
+        width: 180px;
+        height: 180px;
+        max-width: 100%;
+    }
+
+    /* Назва композиції */
+    .player #song-title {
+        font-size: 22px;
+        overflow-wrap: anywhere;
+    }
+
+    /* Кнопки */
+    .player .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Шкала музики */
+    .player .progress-container {
+        width: 100%;
+    }
+
+    /* Регулятор гучності */
+    .player .volume-container {
+        width: 100%;
+    }
+
+    /* Список композицій */
+    .tracks-section {
+        padding: 45px 12px;
+    }
+
+    .tracks-section .tracks-container {
+        width: 100%;
+    }
+
+    .tracks-section .track-item {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .tracks-section .track-info h3 {
+        font-size: 15px;
+    }
+}
+
+/* ===== XEDUCS ORIGINALS ===== */
+
+.originals-section {
+    padding: 80px 20px;
+    background: #10090d;
+    text-align: center;
+}
+
+.originals-section h2 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.originals-section h2 span {
+    color: #ff183c;
+}
+
+.originals-description {
+    color: #aaa;
+    margin-bottom: 35px;
+}
+
+.original-card {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: #211219;
+    border: 1px solid #5b1b2e;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.original-cover {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.original-info h3 {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.original-info p {
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+#play-original {
+    background: #ff183c;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#play-original:hover {
+    background: #d50e30;
+    box-shadow: 0 0 20px #ff183c80;
+}
+
+@media (max-width: 600px) {
+    .original-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .original-cover {
+        width: 180px;
+        height: 180px;
+    }
+
+    .originals-section h2 {
+        font-size: 28px;
+    }
+}

@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>XEDUCS | MUSIC ZONE</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Меню сайту -->
+    <header class="header">
+        <h1 class="logo">XEDUCS<span>.</span></h1>
+
+        <nav>
+            <a href="#home">HOME</a>
+            <a href="#music">MUSIC</a>
+            <a href="#playlists">PLAYLISTS</a>
+            <a href="#about">ABOUT</a>
+        </nav>
+    </header>
+
+    <!-- Головна сторінка -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="subtitle">WELCOME TO MY MUSIC WORLD</p>
+
+            <h2>FEEL THE <span>BEAT.</span></h2>
+
+            <p class="description">
+                Music is not just sound.
+                It's a lifestyle.
+                Welcome to XEDUCS MUSIC ZONE.
+            </p>
+
+            <a href="#music" class="main-button">
+                EXPLORE MUSIC
+            </a>
+        </div>
+    </section>
+
+    <!-- Музичний плеєр -->
+    <section class="music-section" id="music">
+        <h2>NOW <span>PLAYING</span></h2>
+
+        <div class="player">
+            
+<div class="album-cover">
+    <img src="images/cover1.png"
+         alt="Обкладинка пісні"
+         id="album-image">
+</div>
+
+            <h3 id="song-title">My First Track</h3>
+            <p id="artist">XEDUCS MUSIC</p>
+
+            <audio id="audio"></audio>
+            
+<!-- Анімований еквалайзер -->
+<div class="equalizer" id="equalizer">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<!-- Шкала прогресу музики -->
+<div class="progress-container">
+    <input type="range" id="progress"
+           min="0" max="100" value="0"
+           aria-label="Перемотування треку">
+
+    <div class="time">
+        <span id="current-time">0:00</span>
+        <span id="duration">0:00</span>
+    </div>
+</div>
+
+
+            <div class="controls">
+                <button id="prev" aria-label="Попередній трек">⏮</button>
+                <button id="play" aria-label="Відтворити">▶</button>
+                <button id="next" aria-label="Наступний трек">⏭</button>
+            </div>
+            
+<!-- Регулювання гучності -->
+<div class="volume-container">
+    <span>🔊</span>
+
+    <input type="range" id="volume"
+           min="0" max="100" value="70"
+           aria-label="Гучність">
+
+    <span id="volume-value">70%</span>
+</div>
+        </div>
+    </section>
+
+    <!-- Плейлисти -->
+    
+    <!-- Список усіх пісень -->
+    <section class="tracks-section" id="tracks">
+    <h2>YOUR <span>TRACKS</span></h2>
+
+    <div class="tracks-container" id="tracks-list">
+        <!-- JavaScript додасть сюди пісні -->
+    </div>
+    </section>
+    
+<!-- ===== XEDUCS ORIGINALS ===== -->
+<section class="originals-section" id="originals">
+    <h2>XEDUCS <span>ORIGINALS</span></h2>
+
+    <p class="originals-description">
+        My own music. My sound. My style.
+    </p>
+
+    <div class="original-card">
+        <img src="images/cover2.png"
+             alt="Guitar Solo"
+             class="original-cover">
+
+        <div class="original-info">
+            <h3>Guitar Solo</h3>
+            <p>Original guitar performance by XEDUCS</p>
+
+            <button id="play-original" type="button">
+                ▶ PLAY TRACK
+            </button>
+        </div>
+    </div>
+</section>
+
+
+    <section class="playlists" id="playlists">
+        <h2>MY <span>PLAYLISTS</span></h2>
+
+        <div class="playlist-container">
+            <div class="playlist-card">
+                <h3>🔥 PHONK</h3>
+                <p>Feel the energy</p>
+            </div>
+
+            <div class="playlist-card">
+                <h3>🎸 ROCK</h3>
+                <p>Turn up the volume</p>
+            </div>
+
+            <div class="playlist-card">
+                <h3>🌙 NIGHT VIBES</h3>
+                <p>Music for your soul</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Про сайт -->
+    <section class="about" id="about">
+        <h2>ABOUT <span>XEDUCS</span></h2>
+        <p>
+            XEDUCS MUSIC ZONE is my personal music space.
+            Created with HTML, CSS and JavaScript.
+        </p>
+    </section>
+
+    <footer>
+        <p>© 2026 XEDUCS MUSIC ZONE. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+/* ===== XEDUCS TRACK LIST ===== */
+
+.tracks-section {
+    padding: 80px 20px;
+    background: #0b080a;
+    text-align: center;
+}
+
+.tracks-section h2 {
+    font-size: 36px;
+    color: white;
+    margin-bottom: 35px;
+}
+
+.tracks-section h2 span {
+    color: #ff183c;
+}
+
+.tracks-container {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 15px;
+    background: #1b1217;
+    border: 1px solid #38202a;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: left;
+    color: white;
+    width: 100%;
+    font: inherit;
+}
+
+.track-item:hover {
+    background: #30131d;
+    border-color: #ff183c;
+    transform: translateY(-2px);
+}
+
+.track-item.active {
+    background: #3a101d;
+    border-color: #ff183c;
+    box-shadow: 0 0 15px #ff183c33;
+}
+
+.track-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.track-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.track-info h3 {
+    font-size: 17px;
+    margin: 0 0 5px;
+    color: white;
+}
+
+.track-info p {
+    font-size: 13px;
+    color: #aaa;
+    margin: 0;
+}
+
+.track-play {
+    font-size: 23px;
+    color: #ff183c;
+}
+
+@media (max-width: 600px) {
+    .tracks-section {
+        padding: 50px 15px;
+    }
+
+    .tracks-section h2 {
+        font-size: 27px;
+    }
+
+    .track-cover {
+        width: 48px;
+        height: 48px;
+    }
+}
