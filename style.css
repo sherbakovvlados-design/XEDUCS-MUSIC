@@ -811,3 +811,26 @@ footer {
         font-size: 28px;
     }
 }
+
+
+
+/* Відстань між власними композиціями */
+.originals-section .original-card + .original-card {
+    margin-top: 25px;
+}
+
+/* Кнопка нового треку */
+#play-new-guitar {
+    background: #ff183c;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#play-new-guitar:hover {
+    background: #d50e30;
+    box-shadow: 0 0 20px #ff183c80;
+}

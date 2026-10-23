@@ -305,3 +305,23 @@ if (originalBtn) {
         renderTracks();
     });
 }
+
+
+// ===== NEW GUITAR ORIGINAL =====
+
+const newGuitarBtn = document.getElementById("play-new-guitar");
+
+if (newGuitarBtn) {
+    newGuitarBtn.addEventListener("click", () => {
+        const index = songs.findIndex(
+            song => song.title === "XEDUCS - New Guitar"
+        );
+
+        if (index === -1) return;
+
+        songIndex = index;
+        loadSong(songIndex);
+        playSong();
+        renderTracks();
+    });
+}
