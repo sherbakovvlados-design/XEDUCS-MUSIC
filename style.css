@@ -935,3 +935,32 @@ footer {
     }
 }
 
+
+/* ===== XEDUCS ANIMATED COVER ===== */
+
+#album-image {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 15px;
+}
+
+#album-image.playing {
+    animation: xeducsPulse 2s ease-in-out infinite;
+}
+
+@keyframes xeducsPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    }
+
+    50% {
+        transform: scale(1.04);
+        box-shadow: 0 0 35px rgba(255, 0, 0, 0.8);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #album-image.playing {
+        animation: none;
+    }
+}

@@ -330,3 +330,19 @@ if (newGuitarBtn) {
         renderTracks();
     });
 }
+
+// ===== XEDUCS COVER ANIMATION =====
+
+const animatedCover = document.getElementById("album-image");
+
+audio.addEventListener("play", () => {
+    animatedCover.classList.add("playing");
+});
+
+audio.addEventListener("pause", () => {
+    animatedCover.classList.remove("playing");
+});
+
+audio.addEventListener("ended", () => {
+    animatedCover.classList.remove("playing");
+});
