@@ -128,8 +128,24 @@ audio.addEventListener("pause", () => {
     playBtn.setAttribute("aria-label", "Відтворити");
 });
 
-// Автоматичний перехід після завершення
-audio.addEventListener("ended", nextSong);
+// ===== XEDUCS REPEAT MODE =====
+
+const repeatBtn = document.getElementById("repeat");
+let repeatEnabled = false;
+
+repeatBtn.addEventListener("click", () => {
+    repeatEnabled = !repeatEnabled;
+    audio.loop = repeatEnabled;
+
+    repeatBtn.classList.toggle("active", repeatEnabled);
+    repeatBtn.setAttribute("aria-pressed", String(repeatEnabled));
+});
+
+audio.addEventListener("ended", () => {
+    if (!repeatEnabled) {
+        nextSong();
+    }
+});
 
 // Завантажуємо перший трек
 loadSong(songIndex);
