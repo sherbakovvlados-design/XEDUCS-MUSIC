@@ -39,12 +39,17 @@ const songs = [
         cover: "images/cover1.png"
     },
     {
-        title: "you-let-me-down-again",
-        artist: "XEDUCS",
-        src: "Mp3/you-let-me-down-again.mp3",
-        cover: "images/cover1.png"
-  }
-
+    title: "you-let-me-down-again",
+    artist: "XEDUCS",
+    src: "Mp3/you-let-me-down-again.mp3",
+    cover: "images/cover1.png"
+},
+{
+    title: "XEDUCS - New Guitar",
+    artist: "XEDUCS",
+    src: "Mp3/xeducs-new-guitar.mp3",
+    cover: "images/guitar-new.png"
+}
 ];
 
 let songIndex = 0;
