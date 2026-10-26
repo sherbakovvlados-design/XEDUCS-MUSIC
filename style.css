@@ -1087,3 +1087,53 @@ button:active {
         transition: none;
     }
 }
+/* ===== XEDUCS NEON PLAYER REDESIGN ===== */
+
+.music-section {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 0, 50, 0.16),
+            transparent 65%
+        ),
+        #080808;
+}
+
+.music-section .player {
+    border: 2px solid #ff183c;
+    border-radius: 30px;
+
+    background: linear-gradient(
+        145deg,
+        #2b0c17,
+        #10080d 60%,
+        #080808
+    );
+
+    box-shadow:
+        0 0 25px rgba(255, 24, 60, 0.45),
+        0 0 70px rgba(255, 24, 60, 0.15);
+
+    transition: box-shadow 0.3s ease;
+}
+
+.music-section .player:hover {
+    box-shadow:
+        0 0 40px rgba(255, 24, 60, 0.7),
+        0 0 100px rgba(255, 24, 60, 0.25);
+}
+
+.music-section .controls button {
+    border: 1px solid rgba(255, 24, 60, 0.5);
+    box-shadow: 0 0 12px rgba(255, 24, 60, 0.25);
+}
+
+.music-section #play {
+    background: linear-gradient(135deg, #ff183c, #a90025);
+    box-shadow: 0 0 30px rgba(255, 24, 60, 0.7);
+}
+
+.music-section #song-title {
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 24, 60, 0.6);
+}
