@@ -976,3 +976,31 @@ footer {
     text-shadow: 0 0 15px #ff0000;
     transform: scale(1.15);
 }
+
+/* ===== XEDUCS REPEAT BUTTON ===== */
+
+#repeat {
+    transition: 0.3s ease;
+}
+
+#repeat.active {
+    color: #ff0000;
+    text-shadow: 0 0 15px #ff0000;
+    transform: scale(1.15);
+}
+
+/* ===== XEDUCS SHUFFLE BUTTON ===== */
+
+#shuffle {
+    transition: 0.3s ease;
+}
+
+#shuffle.active {
+    color: #ff0000;
+    text-shadow: 0 0 15px #ff0000;
+    transform: scale(1.15);
+}
+
+#shuffle:hover {
+    color: #ff3333;
+}

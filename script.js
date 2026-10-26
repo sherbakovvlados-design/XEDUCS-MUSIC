@@ -89,9 +89,23 @@ function pauseSong() {
     audio.pause();
 }
 
-// Наступний трек
+// ===== XEDUCS SHUFFLE MODE =====
+
+let shuffleEnabled = false;
+
 function nextSong() {
-    songIndex = (songIndex + 1) % songs.length;
+    if (shuffleEnabled && songs.length > 1) {
+        let randomIndex;
+
+        do {
+            randomIndex = Math.floor(Math.random() * songs.length);
+        } while (randomIndex === songIndex);
+
+        songIndex = randomIndex;
+    } else {
+        songIndex = (songIndex + 1) % songs.length;
+    }
+
     loadSong(songIndex);
     playSong();
 }
@@ -361,4 +375,15 @@ audio.addEventListener("pause", () => {
 
 audio.addEventListener("ended", () => {
     animatedCover.classList.remove("playing");
+});
+
+// ===== XEDUCS SHUFFLE BUTTON =====
+
+const shuffleBtn = document.getElementById("shuffle");
+
+shuffleBtn.addEventListener("click", () => {
+    shuffleEnabled = !shuffleEnabled;
+
+    shuffleBtn.classList.toggle("active", shuffleEnabled);
+    shuffleBtn.setAttribute("aria-pressed", String(shuffleEnabled));
 });
