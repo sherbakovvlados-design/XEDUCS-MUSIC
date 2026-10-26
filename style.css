@@ -1004,3 +1004,86 @@ footer {
 #shuffle:hover {
     color: #ff3333;
 }
+
+/* ==================================
+   XEDUCS MUSIC ZONE — NEON DESIGN
+================================== */
+
+/* Плавна прокрутка */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Неонове підсвічування заголовків */
+h1, h2 {
+    text-shadow: 0 0 12px rgba(255, 0, 0, 0.35);
+}
+
+/* Плавна анімація кнопок */
+button {
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+/* Ефект при наведенні на кнопки */
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 18px rgba(255, 0, 0, 0.45);
+}
+
+/* Ефект натискання */
+button:active {
+    transform: scale(0.96);
+}
+
+/* Підсвічування музичних карток */
+.track-item {
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.track-item:hover {
+    transform: translateY(-4px);
+    border-color: #ff2020;
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.2);
+}
+
+/* Активна композиція */
+.track-item.active {
+    border-color: #ff2020;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.25);
+}
+
+/* Підсвічування обкладинок */
+.track-cover {
+    transition: transform 0.35s ease;
+}
+
+.track-item:hover .track-cover {
+    transform: scale(1.06);
+}
+
+/* Красиве виділення тексту */
+::selection {
+    background: #c90000;
+    color: white;
+}
+
+/* Доступність: зменшення анімацій */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    button,
+    .track-item,
+    .track-cover {
+        transition: none;
+    }
+}
