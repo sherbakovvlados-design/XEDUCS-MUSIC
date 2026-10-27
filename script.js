@@ -241,6 +241,32 @@ audio.addEventListener("emptied", () => {
 
 const tracksList = document.getElementById("tracks-list");
 
+// ===== XEDUCS FAVORITES =====
+
+const FAVORITES_KEY = "xeducs-favorites";
+
+let favorites = [];
+
+try {
+    favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
+    if (!Array.isArray(favorites)) favorites = [];
+} catch (error) {
+    favorites = [];
+}
+
+let showFavoritesOnly = false;
+
+function toggleFavorite(src) {
+    if (favorites.includes(src)) {
+        favorites = favorites.filter(item => item !== src);
+    } else {
+        favorites.push(src);
+    }
+
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+    renderTracks();
+}
+
 function renderTracks() {
     tracksList.innerHTML = "";
 
@@ -248,15 +274,20 @@ const searchInput = document.getElementById("track-search");
 const searchText = searchInput ? searchInput.value.toLowerCase().trim() : "";
 
     songs.forEach((song, index) => {
+        if (showFavoritesOnly && !favorites.includes(song.src)) {
+    return;
+}
         if (
     !song.title.toLowerCase().includes(searchText) &&
     !song.artist.toLowerCase().includes(searchText)
 ) {
     return;
 }
-        const track = document.createElement("button");
-        track.type = "button";
+        const track = document.createElement("div");
         track.className = "track-item";
+
+        track.setAttribute("role", "button");
+        track.setAttribute("tabindex", "0");
 
         if (index === songIndex) {
             track.classList.add("active");
@@ -283,9 +314,40 @@ const searchText = searchInput ? searchInput.value.toLowerCase().trim() : "";
         playIcon.textContent =
             index === songIndex && !audio.paused ? "♫" : "▶";
 
-        track.append(cover, info, playIcon);
+        // Кнопка додавання до обраного
+const favoriteBtn = document.createElement("button");
+
+favoriteBtn.type = "button";
+favoriteBtn.className = "favorite-btn";
+
+const isFavorite = favorites.includes(song.src);
+
+favoriteBtn.textContent = isFavorite ? "♥" : "♡";
+favoriteBtn.classList.toggle("active", isFavorite);
+
+favoriteBtn.setAttribute(
+    "aria-label",
+    isFavorite ? "Видалити з обраного" : "Додати до обраного"
+);
+
+favoriteBtn.setAttribute("aria-pressed", String(isFavorite));
+
+favoriteBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleFavorite(song.src);
+});
+
+track.append(cover, info, playIcon, favoriteBtn);
 
         track.addEventListener("click", () => {
+        track.addEventListener("keydown", (event) => {
+    if (event.target !== track) return;
+
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        track.click();
+    }
+});
             if (index === songIndex) {
                 if (audio.paused) {
                     audio.play().catch(console.error);
@@ -403,4 +465,26 @@ const trackSearch = document.getElementById("track-search");
 
 if (trackSearch) {
     trackSearch.addEventListener("input", renderTracks);
+}
+
+// ===== FAVORITES FILTER =====
+
+const favoritesToggle = document.getElementById("favorites-toggle");
+
+if (favoritesToggle) {
+    favoritesToggle.addEventListener("click", () => {
+        showFavoritesOnly = !showFavoritesOnly;
+
+        favoritesToggle.classList.toggle("active", showFavoritesOnly);
+        favoritesToggle.setAttribute(
+            "aria-pressed",
+            String(showFavoritesOnly)
+        );
+
+        favoritesToggle.textContent = showFavoritesOnly
+            ? "♥ Show All Tracks"
+            : "♡ Show Favorites";
+
+        renderTracks();
+    });
 }

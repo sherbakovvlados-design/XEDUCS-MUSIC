@@ -1379,3 +1379,57 @@ img {
 #track-search::placeholder {
     color: #999;
 }
+
+/* ===== XEDUCS FAVORITES ===== */
+
+.favorites-filter {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 25px;
+}
+
+#favorites-toggle {
+    padding: 12px 24px;
+    background: #1a0c12;
+    color: white;
+    border: 1px solid #ff183c;
+    border-radius: 14px;
+    font-size: 15px;
+}
+
+#favorites-toggle.active {
+    background: #b9002b;
+    box-shadow: 0 0 20px rgba(255, 24, 60, 0.45);
+}
+
+.favorite-btn {
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 30px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.favorite-btn:hover {
+    color: #ff183c;
+    transform: scale(1.2);
+}
+
+.favorite-btn.active {
+    color: #ff183c;
+    text-shadow: 0 0 15px rgba(255, 24, 60, 0.6);
+}
+
+.track-item {
+    cursor: pointer;
+}
+
+@media (max-width: 420px) {
+    .favorite-btn {
+        font-size: 24px;
+        padding: 5px;
+    }
+}
