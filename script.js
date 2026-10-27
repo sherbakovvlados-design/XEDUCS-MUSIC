@@ -244,7 +244,16 @@ const tracksList = document.getElementById("tracks-list");
 function renderTracks() {
     tracksList.innerHTML = "";
 
+const searchInput = document.getElementById("track-search");
+const searchText = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
     songs.forEach((song, index) => {
+        if (
+    !song.title.toLowerCase().includes(searchText) &&
+    !song.artist.toLowerCase().includes(searchText)
+) {
+    return;
+}
         const track = document.createElement("button");
         track.type = "button";
         track.className = "track-item";
@@ -387,3 +396,11 @@ shuffleBtn.addEventListener("click", () => {
     shuffleBtn.classList.toggle("active", shuffleEnabled);
     shuffleBtn.setAttribute("aria-pressed", String(shuffleEnabled));
 });
+
+// ===== XEDUCS LIVE SEARCH =====
+
+const trackSearch = document.getElementById("track-search");
+
+if (trackSearch) {
+    trackSearch.addEventListener("input", renderTracks);
+}
